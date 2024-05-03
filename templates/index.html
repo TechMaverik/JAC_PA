@@ -41,10 +41,11 @@
     <div class="col-sm-3 sidenav">
       <h4>JAC-PA</h4>
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1">Expenses</a></li>
-        <li><a href="#section2">Add Expense</a></li>
-        <li><a href="#section3">Add Accounts</a></li>
-        <li><a href="#section3">Settings</a></li>
+        <li class="active"><a href="{{'/'}}">Expenses</a></li>
+        <li><a href="{{'/add_expenses'}}">Add Expense</a></li>
+        <li><a href="{{'/add_accounts'}}">Accounts</a></li>
+        <li><a href="{{'/add_source'}}">Add Source</a></li>
+        <li><a href="{{'/settings'}}">Settings</a></li>
       </ul><br>
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Search Blog..">
@@ -59,7 +60,41 @@
     <div class="col-sm-9">
       <h4><small>RECENT EXPENSES</small></h4>
       <hr>
-     
+     {% if status %}
+     <div class="alert alert-success" role="alert">
+      Database Created Successfully
+      {% endif %}     
+    
+      <br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Account</th>
+            <th scope="col">Expense Type</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        {% for value in rows %}
+        <tbody>
+          <tr>
+            <td>
+              {{value[0]}}
+            </td>
+            <td>{{value[1]}}</td>
+            <td>{{value[4]}}</td>
+            <td>{{value[3]}}</td>
+            <td>{{value[2]}}</td>
+            <td>{{value[8]}}</td>
+            <td><a href="{{'/delete_expenses'}}"><input type="button" class="btn btn-danger" value="Delete"/></a></td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
       <br><br>
       
       

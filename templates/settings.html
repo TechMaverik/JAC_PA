@@ -41,10 +41,9 @@
     <div class="col-sm-3 sidenav">
       <h4>JAC-PA</h4>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="{{'/'}}">Expenses</a></li>
+        <li class="active"><a href="{{'/'}}">Expenses</a></li>
         <li><a href="{{'/add_expenses'}}">Add Expense</a></li>
-        <li class="active"><a href="{{'/add_accounts'}}">Add Accounts</a></li>
-        <li><a href="{{'/add_source'}}">Add Source</a></li>
+        <li><a href="{{'/add_accounts'}}">Add Accounts</a></li>
         <li><a href="{{'/settings'}}">Settings</a></li>
       </ul><br>
       <div class="input-group">
@@ -58,56 +57,21 @@
     </div>
 
     <div class="col-sm-9">
-      <h4><small>ADD ACCOUNT DETAILS</small></h4>
+      <h4><small>SETTINGS</small></h4>
       <hr>
-      <form action="/add_accounts" method="post">        
+      <form action="/create_db" method="post">
         <div class="form-group">
-            <input type="text" class="form-control" name="account" aria-describedby="account" placeholder="Account">
+            <button type="submit" class="btn btn-danger">Create Database</button>
           </div>
-          <div class="form-group">
-            <input type="text" class="form-control" name="account_no" aria-describedby="account_no" placeholder="Account No">
-          </div>
-        <div class="form-group">
-          <input type="text" class="form-control" name="balance" aria-describedby="balance" placeholder="Balance">
-        </div>
-        <div class="form-group">
-          <input type="date" class="form-control" name="date" >
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-success">Submit</button>
-        </div>
       </form>
       <br><br>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Account</th>
-            <th scope="col">Account No</th>
-            <th scope="col">Balance</th>
-            <th scope="col">Date</th>
-            <th scope="col">Action</th>
-          </tr>
-          {% for value in rows %}
-          <tbody>
-            <tr>
-              <td>
-                {{value[0]}}
-              </td>
-              <td>{{value[1]}}</td>
-              <td>{{value[2]}}</td>
-              <td>{{value[3]}}</td>
-              <td>{{value[4]}}</td>
-              <td><a href="/delete_accounts"><input type="button" class="btn btn-danger" value="Delete"/></a></td>
-            </tr>
-          </tbody>
-          {% endfor %}
-        </thead>
-      </table>
+      
+      
+      
+      
     </div>
   </div>
 </div>
-
 
 <footer class="container-fluid">
   <p>Footer Text</p>
