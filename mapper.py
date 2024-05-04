@@ -105,3 +105,29 @@ def delete_expenses(Id):
         conn.commit()
     conn.close()
     return True
+
+
+def cash_incoming_to_account(account, Id, new_amount):
+    new_balance = 0
+    with sqlite3.connect("jac_pa.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT balance from Accounts where account=?", (account,))
+        rows = cursor.fetchall()
+        print(rows)
+        conn.commit()
+    conn.close()
+    for balance in rows:
+        new_balance = int(balance[0]) + int(new_amount)
+        print(balance)
+
+    with sqlite3.connect("jac_pa.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            "UPDATE Accounts SET balance=? WHERE id=?",
+            (
+                new_balance,
+                Id,
+            ),
+        )
+        conn.commit()
+    conn.close()

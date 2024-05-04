@@ -64,3 +64,11 @@ def delete_expenses():
     if request.method == "POST":
         id = request.form.get("ID")
         mapper.delete_expenses(id)
+
+
+def cash_incoming_to_account():
+    if request.method == "POST":
+        account = request.form.get("account")
+        id = request.form.get("ID")
+        new_amount = request.form.get("amount")
+        mapper.cash_incoming_to_account(account, id, new_amount)

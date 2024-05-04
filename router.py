@@ -49,5 +49,11 @@ def delete_accounts():
     return render_template("delete.html")
 
 
+@app.route("/cash_incoming", methods=["get", "post"])
+def cash_incoming():
+    service.cash_incoming_to_account()
+    return render_template("cash_incoming.html")
+
+
 if __name__ == "__main__":
     app.run("localhost", "5000", debug=True)
