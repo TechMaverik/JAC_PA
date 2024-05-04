@@ -81,24 +81,25 @@
         <div class="form-group">
           <label for="expense type">Expense Type :</label>
           <select  class="form-control" name="type">
-            <option>-</option>
-            <option>Overkill</option>
-            <option>Grocery</option>
+            {%for option in menu %}
+            <option>{{option}}</option>
+            {%endfor%}
           </select>
         </div>
         <div class="form-group">
           <label for="consumable bill">Is Consumable Bill? :</label>
           <select  class="form-control" name="bill">
-            <option>-</option>
-            <option>Yes</option>
-            <option>No</option>
+            {%for option in yes_no %}
+            <option>{{option}}</option>
+            {%endfor%}          
           </select>
         </div>
         <div class="form-group">
           <label for="Recurring expense">Is Recurring Expense? :</label>
           <select  class="form-control" name="recurring">
-            <option>Yes</option>
-            <option>No</option>
+            {%for option in yes_no %}
+            <option>{{option}}</option>
+            {%endfor%}
           </select>
         </div>
         <div class="form-group">

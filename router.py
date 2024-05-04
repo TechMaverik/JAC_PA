@@ -1,5 +1,5 @@
-from flask import Flask, render_template, url_for, request
-import random
+from flask import Flask, render_template
+from constants import menu
 import service, mapper
 
 app = Flask("__name__")
@@ -27,7 +27,12 @@ def settings():
 def add_expenses():
 
     status = service.add_expenses()
-    return render_template("add_expenses.html", status=status)
+    return render_template(
+        "add_expenses.html",
+        status=status,
+        menu=menu.expense_type_menu,
+        yes_no=menu.yes_no,
+    )
 
 
 @app.route("/add_accounts", methods=["get", "post"])
