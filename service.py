@@ -72,3 +72,10 @@ def cash_incoming_to_account():
         id = request.form.get("ID")
         new_amount = request.form.get("amount")
         mapper.cash_incoming_to_account(account, id, new_amount)
+
+
+def search():
+    if request.method == "POST":
+        from_date = request.form.get("from")
+        to_date = request.form.get("to")
+        return mapper.search(from_date, to_date)

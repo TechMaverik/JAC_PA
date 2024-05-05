@@ -39,7 +39,7 @@
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav">
-      <h4>JAC-PA</h4>
+      <img src="static/JAC_AI.png" alt="JAC Accounts"  class="img-thumbnail"/>
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="{{'/'}}">Expenses</a></li>
         <li><a href="{{'/add_expenses'}}">Add Expense</a></li>
@@ -47,13 +47,21 @@
         <li><a href="{{'/cash_incoming'}}">Cash Incoming</a></li>
         <li><a href="{{'/settings'}}">Settings</a></li>
       </ul><br>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search Blog..">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
+      <div>
+        <form action="/search" method="post">
+          <div >
+            <input type="date" class="form-control" name="from" aria-describedby="from" placeholder="from">
+          </div>
+          <br>
+          <div >
+            <input type="date" class="form-control" name="to" aria-describedby="to" placeholder="to">
+          </div>
+          <div><br></div>
+          <div>
+            <input type="submit" class="btn btn-success" name="search" aria-describedby="search" value="Search">
+          </div>
+        </form>
+        
       </div>
     </div>
 
@@ -61,10 +69,10 @@
       <h4><small>RECENT EXPENSES</small></h4>
       <hr>
      {% if status %}
-     <div class="alert alert-success" role="alert">
-      Database Created Successfully
+     <div class="alert alert-danger" role="alert">
+      Purged all table entries
       {% endif %}     
-    
+      
       <br>
       <table class="table">
         <thead>
@@ -78,6 +86,7 @@
             <th scope="col">Action</th>
           </tr>
         </thead>
+        
         {% for value in rows %}
         <tbody>
           <tr>
@@ -103,10 +112,6 @@
     </div>
   </div>
 </div>
-
-<footer class="container-fluid">
-  <p>Footer Text</p>
-</footer>
 
 </body>
 </html>

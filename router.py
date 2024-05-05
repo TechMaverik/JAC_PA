@@ -60,5 +60,17 @@ def cash_incoming():
     return render_template("cash_incoming.html")
 
 
+@app.route("/search", methods=["get", "post"])
+def search():
+    rows = service.search()
+    return render_template("index.html", rows=rows)
+
+
+@app.route("/delete_all", methods=["get", "post"])
+def delete_all():
+    status = mapper.delete_all()
+    return render_template("index.html", status=status)
+
+
 if __name__ == "__main__":
-    app.run("localhost", "5000", debug=True)
+    app.run("127.0.0.1", "5000", debug=True)

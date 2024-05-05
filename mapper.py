@@ -127,3 +127,31 @@ def cash_incoming_to_account(account, Id, new_amount):
         )
         conn.commit()
     conn.close()
+
+
+def search(from_date, to_date):
+    with sqlite3.connect("jac_pa.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT * from Expenses WHERE date Between ? And ?",
+            (
+                from_date,
+                to_date,
+            ),
+        )
+        rows = cursor.fetchall()
+        conn.commit()
+    conn.close()
+
+    return rows
+
+
+def delete_all():
+    with sqlite3.connect("jac_pa.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("DELETE from Accounts")
+        conn.commit()
+        cursor.execute("DELETE from Expenses")
+        conn.commit()
+    conn.close()
+    return True

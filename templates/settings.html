@@ -39,22 +39,14 @@
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav">
-      <h4>JAC-PA</h4>
+      <img src="static/JAC_AI.png" alt="JAC Accounts"  class="img-thumbnail"/>
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="{{'/'}}">Expenses</a></li>
+        <li><a href="{{'/'}}">Expenses</a></li>
         <li><a href="{{'/add_expenses'}}">Add Expense</a></li>
         <li><a href="{{'/add_accounts'}}">Add Accounts</a></li>
         <li><a href="{{'/cash_incoming'}}">Cash Incoming</a></li>
-        <li><a href="{{'/settings'}}">Settings</a></li>
+        <li class="active"><a href="{{'/settings'}}">Settings</a></li>
       </ul><br>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search Blog..">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
-      </div>
     </div>
 
     <div class="col-sm-9">
@@ -62,7 +54,12 @@
       <hr>
       <form action="/create_db" method="post">
         <div class="form-group">
-            <button type="submit" class="btn btn-danger">Create Database</button>
+            <button type="submit" class="btn btn-danger" disabled>Create Database</button>
+          </div>
+      </form>
+      <form action="/delete_all" method="post">
+        <div class="form-group">
+            <button type="submit" class="btn btn-danger">Purge All Data</button>
           </div>
       </form>
       <br><br>
@@ -73,10 +70,6 @@
     </div>
   </div>
 </div>
-
-<footer class="container-fluid">
-  <p>Footer Text</p>
-</footer>
 
 </body>
 </html>
