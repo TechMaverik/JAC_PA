@@ -6,6 +6,7 @@ expense_type_menu = [
     "Food",
     "Groceries",
     "Commuting",
+    "Mobile Recharge",
     "Over Kill",
     "Loan",
     "House Rent",
